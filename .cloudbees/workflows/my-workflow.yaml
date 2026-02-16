@@ -28,10 +28,9 @@ jobs:
           file-type: BINARY_CONTAINER 
           debug: "true"
           alias: 020229604682.dkr.ecr.us-east-1.amazonaws.com/throwaway/actions/vulnerable-image:vuln-hac-0.1
-      - name: Debug outputs from upload-binary
+
+      - name: Print output parameter artifact ID
         uses: docker://alpine:latest
         shell: sh
         run: |
-          echo "artifact-id: ${{ steps.upload-binary.outputs.artifact-id }}"
-          echo "artifact-url: ${{ steps.upload-binary.outputs.artifact-url }}"
-          echo "id: ${{ steps.upload-binary.outputs.id }}"
+          echo "artifact ID for cp-go-repo2:${{ cloudbees.version }} is: ${{ steps.register-artifact.outputs.artifact-id }}"
